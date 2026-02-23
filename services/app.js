@@ -7,33 +7,37 @@ let persons = XLSX.utils.sheet_to_json(workbook.Sheets['Persons']);
 let products = XLSX.utils.sheet_to_json(workbook.Sheets['Products']);
 let orders = XLSX.utils.sheet_to_json(workbook.Sheets['Orders']);
 
-console.log("===== PERSONS =====");
-console.log(persons);
-
-console.log("\n===== PRODUCTS =====");
-console.log(products);
-
-console.log("\n===== ORDERS =====");
-console.log(orders);
-
-persons = DataService.sortByKey(persons, 'name');
-console.log("\n===== PERSONS SORTED BY NAME =====");
-console.log(persons);
+console.log("===== ORIGINAL DATA =====");
+console.log("Persons:", persons);
+console.log("Products:", products);
+console.log("Orders:", orders);
 
 products = DataService.sortByKey(products, 'price');
-console.log("\n===== PRODUCTS SORTED BY PRICE =====");
-console.log(products);
 
-products = DataService.updateById(products, 1, { price: 500 });
-console.log("\n===== PRODUCTS AFTER UPDATE =====");
-console.log(products);
+orders = DataService.sortByKey(orders, 'orderDate');
+
+console.log("\n===== AFTER SORTING =====");
+
+console.log("Products:", products);
+console.log("Orders:", orders);
+
+products = DataService.updateById(products, 1, { price: 60000 });
+
+console.log("\n===== AFTER UPDATES =====");
+console.log("Products:", products);
 
 orders = DataService.deleteById(orders, 4);
-console.log("\n===== ORDERS AFTER DELETE =====");
-console.log(orders);
 
+console.log("\n===== AFTER DELETES =====");
+
+console.log("Orders:", orders);
+
+workbook.Sheets['Persons'] = XLSX.utils.json_to_sheet(persons);
+workbook.Sheets['Products'] = XLSX.utils.json_to_sheet(products);
+workbook.Sheets['Orders'] = XLSX.utils.json_to_sheet(orders);
+
+XLSX.writeFile(workbook, 'Task1.xlsx'); 
 
 const detailedOrders = DataService.getDetailedOrders(orders, persons, products);
-
 console.log("\n===== DETAILED ORDERS =====");
 console.log(detailedOrders);
