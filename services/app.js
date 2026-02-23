@@ -3,9 +3,9 @@ const DataService = require('./DataService');
 
 const workbook = XLSX.readFile('Task1.xlsx');
 
-const persons = XLSX.utils.sheet_to_json(workbook.Sheets['Persons']);
-const products = XLSX.utils.sheet_to_json(workbook.Sheets['Products']);
-const orders = XLSX.utils.sheet_to_json(workbook.Sheets['Orders']);
+let persons = XLSX.utils.sheet_to_json(workbook.Sheets['Persons']);
+let products = XLSX.utils.sheet_to_json(workbook.Sheets['Products']);
+let orders = XLSX.utils.sheet_to_json(workbook.Sheets['Orders']);
 
 console.log("===== PERSONS =====");
 console.log(persons);
