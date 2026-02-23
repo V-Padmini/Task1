@@ -7,6 +7,21 @@ class DataService {
     static filterByKey(array, key, value) {
         return array.filter(item => item[key] === value);
     }
+
+
+    static sortByKey(array, key) {
+        return [...array].sort((a, b) => a[key] - b[key]);
+    }
+
+    static deleteById(array, id) {
+        return array.filter(item => item.id !== id);
+    }
+
+    static updateById(array, id, updatedData) {
+        return array.map(item =>
+            item.id === id ? { ...item, ...updatedData } : item
+        );
+    }
     
     static getDetailedOrders(orders, persons, products) {
 
