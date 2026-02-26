@@ -7,39 +7,37 @@
 
 body {
     background: #f4f6f9;
-    padding: 20px;
+    padding: 30px;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
 }
 
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 header h1 {
     color: #2c3e50;
-    margin-bottom: 5px;
-}
-
-header p {
-    color: #7f8c8d;
+    font-size: 28px;
 }
 
 .upload-section {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .upload-label {
     background: #3498db;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .upload-label:hover {
@@ -52,19 +50,19 @@ input[type="file"] {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 40px;
 }
 
 .card {
     background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: #34495e;
 }
 
@@ -72,24 +70,39 @@ input[type="file"] {
     overflow-x: auto;
 }
 
+/* ✅ FIXED ALIGNMENT */
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* ⭐ Important */
 }
 
+table th,
+table td {
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Header Styling */
 table th {
     background: #3498db;
     color: white;
-    padding: 8px;
     font-size: 14px;
 }
 
+/* Body Styling */
 table td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
     font-size: 13px;
+    border-bottom: 1px solid #ddd;
 }
 
+/* Zebra Rows */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover Effect */
 table tr:hover {
     background: #f1f1f1;
 }
