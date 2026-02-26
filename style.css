@@ -70,7 +70,6 @@ input[type="file"] {
     overflow-x: auto;
 }
 
-/* ✅ FIXED ALIGNMENT */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -84,25 +83,21 @@ table td {
     word-wrap: break-word;
 }
 
-/* Header Styling */
 table th {
     background: #3498db;
     color: white;
     font-size: 14px;
 }
 
-/* Body Styling */
 table td {
     font-size: 13px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Zebra Rows */
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Hover Effect */
 table tr:hover {
     background: #f1f1f1;
 }
