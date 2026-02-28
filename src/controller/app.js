@@ -1,7 +1,10 @@
 const XLSX = require('xlsx');
-const DataService = require('./DataService');
+const path = require('path');
+const DataService = require('../service/DataService');
 
-const workbook = XLSX.readFile('Task1.xlsx');
+// Correct path to Task1.xlsx inside src folder
+const filePath = path.join(__dirname, '../Task1.xlsx');
+const workbook = XLSX.readFile(filePath);
 
 let persons = XLSX.utils.sheet_to_json(workbook.Sheets['Persons']);
 let products = XLSX.utils.sheet_to_json(workbook.Sheets['Products']);
@@ -12,32 +15,35 @@ console.log("Persons:", persons);
 console.log("Products:", products);
 console.log("Orders:", orders);
 
+// Sorting
 products = DataService.sortByKey(products, 'price');
-
 orders = DataService.sortByKey(orders, 'orderDate');
 
 console.log("\n===== AFTER SORTING =====");
-
 console.log("Products:", products);
 console.log("Orders:", orders);
 
+// Update
 products = DataService.updateById(products, 1, { price: 60000 });
 
 console.log("\n===== AFTER UPDATES =====");
 console.log("Products:", products);
 
+// Delete
 orders = DataService.deleteById(orders, 4);
 
 console.log("\n===== AFTER DELETES =====");
-
 console.log("Orders:", orders);
 
+// Write updated data back to Excel
 workbook.Sheets['Persons'] = XLSX.utils.json_to_sheet(persons);
 workbook.Sheets['Products'] = XLSX.utils.json_to_sheet(products);
 workbook.Sheets['Orders'] = XLSX.utils.json_to_sheet(orders);
 
-XLSX.writeFile(workbook, 'Task1.xlsx'); 
+XLSX.writeFile(workbook, filePath);
 
+// Detailed Orders
 const detailedOrders = DataService.getDetailedOrders(orders, persons, products);
+
 console.log("\n===== DETAILED ORDERS =====");
 console.log(detailedOrders);

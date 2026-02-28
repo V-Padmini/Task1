@@ -6,7 +6,6 @@ class ExcelService {
             alert(sheetName + " sheet not found!");
             return [];
         }
-
         return XLSX.utils.sheet_to_json(worksheet);
     }
 
@@ -40,27 +39,22 @@ class ExcelService {
         });
     }
 }
-document.getElementById("fileInput").addEventListener("change", function (event) {
 
-    const file = event.target.files[0];
-    if (!file) return;
+window.onload = function () {
 
-    const reader = new FileReader();
+    fetch("Task1.xlsx")
+        .then(response => response.arrayBuffer())
+        .then(data => {
 
-    reader.onload = function (e) {
+            const workbook = XLSX.read(data, { type: "array" });
 
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: "array" });
+            const persons = ExcelService.readSheet(workbook, "Persons");
+            const products = ExcelService.readSheet(workbook, "Products");
+            const orders = ExcelService.readSheet(workbook, "Orders");
 
-        const persons = ExcelService.readSheet(workbook, "Persons");
-        const products = ExcelService.readSheet(workbook, "Products");
-        const orders = ExcelService.readSheet(workbook, "Orders");
+            ExcelService.displaySheet(persons, "personsTable");
+            ExcelService.displaySheet(products, "productsTable");
+            ExcelService.displaySheet(orders, "ordersTable");
 
-        ExcelService.displaySheet(persons, "personsTable");
-        ExcelService.displaySheet(products, "productsTable");
-        ExcelService.displaySheet(orders, "ordersTable");
-
-    };
-
-    reader.readAsArrayBuffer(file);
-});
+        });
+};

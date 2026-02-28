@@ -1,13 +1,12 @@
 const XLSX = require('xlsx');
-const DataService = require('../services/DataService');
-const Order = require('../models/Order');
+const DataService = require('../src/service/DataService');
+const Order = require('../src/model/Order');
 
-const workbook = XLSX.readFile('Task1.xlsx');
+const workbook = XLSX.readFile('src/Task1.xlsx');
 
 const persons = XLSX.utils.sheet_to_json(workbook.Sheets['Persons']);
 const products = XLSX.utils.sheet_to_json(workbook.Sheets['Products']);
 const orders = XLSX.utils.sheet_to_json(workbook.Sheets['Orders']);
-
 
 
 describe("DataService Tests (Excel Data)", () => {

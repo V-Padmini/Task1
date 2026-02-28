@@ -25,29 +25,6 @@ header h1 {
     font-size: 28px;
 }
 
-.upload-section {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.upload-label {
-    background: #3498db;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.upload-label:hover {
-    background: #2980b9;
-}
-
-input[type="file"] {
-    display: none;
-}
-
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -73,7 +50,7 @@ input[type="file"] {
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* ⭐ Important */
+    table-layout: fixed;
 }
 
 table th,
@@ -94,7 +71,7 @@ table td {
     border-bottom: 1px solid #ddd;
 }
 
-tbody tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
