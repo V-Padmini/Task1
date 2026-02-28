@@ -8,7 +8,6 @@ const persons = XLSX.utils.sheet_to_json(workbook.Sheets['Persons']);
 const products = XLSX.utils.sheet_to_json(workbook.Sheets['Products']);
 const orders = XLSX.utils.sheet_to_json(workbook.Sheets['Orders']);
 
-
 describe("DataService Tests (Excel Data)", () => {
 
     test("findById should return correct person from Excel", () => {
